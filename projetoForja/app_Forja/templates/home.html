@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+<!-- A classe container é usada para envolver e centralizar o conteúdo dentro de um layout baseado em grid. -->
+<div class="container">
+  <!-- A classe row é usada para criar uma linha horizontal que contém as colunas dentro de um layout baseado em grid. -->
+  <div class="row">
+    <h2 style="text-align: center;">Transcrição de Fala</h2>
+    <!-- A classe "col" do Bootstrap é usada para definir o layout das colunas dentro de uma linha ("row") em um layout baseado em grid.-->
+    <div class="col-md-1">
+      <button id="zoom-in" class="botao" style="font-size: 20px;" data-toggle="tooltip" title="Zoom In"><i
+          class="fa-solid fa-magnifying-glass-plus"></i></button>
+      <button id="zoom-out" class="botao" style="font-size: 20px;" data-toggle="tooltip" title="Zoom Out"><i
+          class="fa-solid fa-magnifying-glass-minus"></i></button>
+<<<<<<< HEAD
+      <!-- Botões de fonte -->
+      <!-- Botão para abrir o menu de opções -->
+      <button id="configuracoes-btn" class="botao" data-toggle="tooltip" title="Configurar Fonte"><i
+          class="fa-solid fa-gears"></i></button>
+      <div id="configuracoes-menu" style="display: none;">
+        <button id="fonte-dislexia" class="botao" data-toggle="tooltip" title="Fonte para Dislexia"></button>
+        <div class="dropdown-selecao-fonte">
+          <button class="font-selector-button dropbtn botao" data-toggle="tooltip" title="Selecione uma Fonte:"><i
+              class="fa-solid fa-font"></i></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">OpenDyslexic</a>
+            <a class="dropdown-item" href="#">Arial</a>
+            <a class="dropdown-item" href="#">Helvetica</a>
+            <a class="dropdown-item" href="#">Times New Roman</a>
+            <a class="dropdown-item" href="#">Verdana</a>
+            <a class="dropdown-item" href="#">Georgia</a>
+            <a class="dropdown-item" href="#">Alfa Slab One</a>
+          </div>
+        </div>
+        <label>Cor:</label>
+        <input type="color" id="color-picker" class="color-picker" data-toggle="tooltip" title="Escolher cor da fonte">
+      </div>
+      <button id="modo-claro" class="botao" data-toggle="tooltip" title="Tema Claro"><i
+          class="fa-solid fa-sun"></i></button>
+      <button id="modo-escuro" class="botao" data-toggle="tooltip" title="Tema Escuro"><i
+          class="fa-solid fa-moon"></i></button>
+      <button id="modo-alto-contraste" class="botao" data-toggle="tooltip" title="Alto Contraste"><i
+          class="fa-solid fa-circle-half-stroke"></i></button>
+
+
+      <!--Posicionamento dos botões quando em dispositivos móveis-->
+      <!-- Div para os botões de controle -->
+      <div id="btn-controleMob" style="margin-top: 10px;visibility: hidden;">
+        <!-- Botão de gravar -->
+        <button id="record-buttonMob" class="botao" style="font-size: 95%;" data-toggle="tooltip" title="Gravar"><i
+            class="fa-solid fa-circle text-danger"></i></button>
+        <!-- Botão de parar -->
+        <button id="stop-buttonMob" class="botao" data-toggle="tooltip" title="Parar" style="margin-left: 2px;"><i
+            class="fa-solid fa-square"></i></button>
+      </div>
+      <!-- Div para o dropdown de formato e os botões de confirmar e fechar -->
+      <div id="btn-confirmarMob" style="margin-top: 10px;visibility: hidden;">
+        <div id="formato-dropdownMob" style="display: none;" class="botao">
+          <!-- Dropdown de formato -->
+          <select id="formato-selectMob">
+            <option value="" selected>Selecionar formato</option>
+            <option value="txt">Texto Simples (.txt)</option>
+            <option value="pdf">PDF (.pdf)</option>
+          </select>
+          <!-- Botão de confirmar -->
+          <button id="confirmar-btnMob" class="botao" style="display: none;" data-toggle="tooltip" title="Confirmar"><i
+              class="fas fa-circle-check text-success"></i></button>
+          <!-- Botão de fechar -->
+          <button id="fechar-btnMob" class="botao" style="display: none; margin-left: 10px;" data-toggle="tooltip"
+            title="Fechar"><i class="fas fa-circle-xmark text-danger"></i></button>
+        </div>
+      </div>
+
+      <div id="transferencia-btnMob" style="visibility: hidden;">
+        <!-- Botão de download -->
+        <button id="download-btnMob" class="botao" style="font-size: 120%;" data-toggle="tooltip"
+          title="Baixar Conteúdo"><i class="fa fa-download"></i></button>
+        <!-- Novo botão de Fazer Upload -->
+        <input type="file" id="fileInputMob" accept=".txt" style="display: none;">
+        <button id="upload-btnMob" class="botao" style="font-size: 120%;margin-left: 2px;"><i class="fa fa-upload"
+            data-toggle="tooltip" title="Fazer Upload"></i></button>
+      </div>
+=======
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+    </div>
+
+    <div class="col-md-10 ">
+      <div id="dice-result-overlay">
+        <div id="dice-result-popup">
+          <div id="dice-animation">
+            <i class="fa-solid fa-dice-d20 fa-spin-pulse" style="color:red"></i>
+          </div>
+          <div id="result-number"></div>
+        </div>
+      </div>
+
+      <!-- Chat-container é utilizado para estilizar a área de chat e controlar o zoom no conteúdo do chat. -->
+      <textarea id="texto-reconhecido" class="chat-box" rows="10" cols="50" style="overflow-y: auto;"></textarea>
+
+      <input type="hidden" id="csrf_token" value='{% csrf_token %}'>
+
+      <div class="outer-container">
+        <div class="dice-container">
+          <button id="botao-dado1" class="botao" onclick="rollDice(4)">Rolar D4</button>
+          <button id="botao-dado2" class="botao" onclick="rollDice(6)">Rolar D6</button>
+          <button id="botao-dado3" class="botao" onclick="rollDice(8)">Rolar D8</button>
+          <button id="botao-dado4" class="botao" onclick="rollDice(10)">Rolar D10</button>
+          <button id="botao-dado5" class="botao" onclick="rollDice(12)">Rolar D12</button>
+          <button id="botao-dado6" class="botao" onclick="rollDice(20)">Rolar D20</button>
+          <button id="botao-dado7" class="botao" onclick="rollDice(100)">Rolar D100</button>
+          <button id="botao-dado8" onclick="event.preventDefault();"></button>
+          <button id="botao-dado9" onclick="event.preventDefault();"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coluna para os botões de controle (gravar, parar, etc.) -->
+    <div class="col-1">
+      <!-- Div para os botões de controle -->
+      <div id="btn-controle" style="margin-top: 10px;">
+        <!-- Botão de gravar -->
+        <button id="record-button" class="botao" style="font-size: 95%;" data-toggle="tooltip" title="Gravar"><i
+            class="fa-solid fa-circle text-danger"></i></button>
+        <!-- Botão de parar -->
+        <button id="stop-button" class="botao" data-toggle="tooltip" title="Parar" style="margin-left: 2px;"><i
+            class="fa-solid fa-square"></i></button>
+      </div>
+      <!-- Div para o dropdown de formato e os botões de confirmar e fechar -->
+      <div id="btn-confirmar" style="margin-top: 10px;">
+        <div id="formato-dropdown" style="display: none;" class="botao">
+          <!-- Dropdown de formato -->
+          <select id="formato-select">
+            <option value="" selected>Selecionar formato</option>
+            <option value="txt">Texto Simples (.txt)</option>
+            <option value="pdf">PDF (.pdf)</option>
+          </select>
+          <!-- Botão de confirmar -->
+          <button id="confirmar-btn" class="botao" style="display: none;" data-toggle="tooltip" title="Confirmar"><i
+              class="fas fa-circle-check text-success"></i></button>
+          <!-- Botão de fechar -->
+          <button id="fechar-btn" class="botao" style="display: none; margin-left: 10px;" data-toggle="tooltip"
+            title="Fechar"><i class="fas fa-circle-xmark text-danger"></i></button>
+        </div>
+      </div>
+      <div id="transferencia-btn">
+        <!-- Botão de download -->
+        <button id="download-btn" class="botao" style="font-size: 120%;" data-toggle="tooltip"
+          title="Baixar Conteúdo"><i class="fa fa-download"></i></button>
+        <!-- Novo botão de Fazer Upload -->
+        <input type="file" id="fileInput" accept=".txt" style="display: none;">
+        <button id="upload-btn" class="botao" style="font-size: 120%;margin-left: 2px;"><i class="fa fa-upload"
+            data-toggle="tooltip" title="Fazer Upload"></i></button>
+      </div>
+
+    </div>
+
+  </div> <!-- Fim da linha Bootstrap -->
+
+</div> <!-- Fim do container Bootstrap -->
+
+<<<<<<< HEAD
+
+<!-- Elemento de áudio -->
+<audio id="dice-sound" src="{% static 'sons/rpg-dice.mp3' %}" preload="auto"></audio>
+<audio id="successSound" src="{% static 'sons/success.mp3' %}" preload="auto"></audio>
+<audio id="failSound" src="{% static 'sons/fail.mp3' %}" preload="auto"></audio>
+=======
+<!-- Inclusão dos scripts -->
+<script src="{% static 'js/audio_recorder.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+  function rollDice(sides) {
+    const overlay = document.getElementById('dice-result-overlay');
+    const diceAnimation = document.getElementById('dice-animation');
+    const resultNumber = document.getElementById('result-number');
+    const chatBox = document.getElementById('texto-reconhecido');
+
+    // Exibir overlay
+    overlay.style.display = 'flex';
+
+    // Exibir dado girando
+    diceAnimation.innerHTML = '<i class="fa-solid fa-dice-d20 fa-spin-pulse" style="color:red"></i>';
+
+    // Simular tempo de rolagem
+    setTimeout(() => {
+      const result = Math.floor(Math.random() * sides) + 1;
+
+      // Exibir número
+      resultNumber.innerText = result;
+
+      // Esconder dado e número após 2 segundos
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        diceAnimation.innerHTML = ''; // Remover dado
+        resultNumber.innerText = ''; // Remover número
+
+        // Adicionar o resultado à caixa de texto
+        chatBox.value += '\nResultado D' + sides + ': ' + result + '\n';
+      }, 2000); // Duração da exibição do número
+    }, 1000); // Duração da animação do dado
+  }
+
+
+</script>
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+
+<script src="{% static 'js/roll-dice.js' %}"></script>
+<script src="{% static 'js/audio_recorder.js' %}"></script>
+<script src="{% static 'js/transfer-buttons.js' %}"></script>
+<script src="{% static 'js/contrast-mode.js' %}"></script>
+<script src="{% static 'js/font-mode.js' %}"></script>
+<script src="{% static 'js/color-picker.js' %}"></script>
+<script src="{% static 'js/zoom-buttons.js' %}"></script>
+
+<!-- Fim do bloco de conteúdo -->
+{% endblock %}

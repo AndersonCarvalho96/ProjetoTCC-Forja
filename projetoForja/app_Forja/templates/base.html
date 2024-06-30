@@ -1,0 +1,304 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tags e configurações iniciais. -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Importação do Bootstrap CSS. -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Importação do seu arquivo CSS personalizado. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Inclusão de um ícone SVG. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Inclusão do seu arquivo JavaScript personalizado. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands"></script>
+<<<<<<< HEAD
+=======
+    <!-- Inclusão do seu arquivo JavaScript personalizado. -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+    <title>Forja Épica de Aventuras</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="titulo"><i class="fa-solid fa-dice-d20" style="color:red;"></i>
+<<<<<<< HEAD
+            Forja Épica de Aventuras <i class="fa-solid fa-dice-d20" style="color:red;"></i></h1>
+        <!-- Menu para tela grande -->
+        <nav class="nav-bar">
+            <ul>
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" id="inicio-link" href="{% url 'home' %}"><i
+                            class="fa-solid fa-dice-d20 fa-spin fa-spin-reverse" style="color: #ff0000;"></i> Inicio</a>
+                    <!-- Link para a página Inicial. -->
+                </li>
+                <!-- Lista de navegação com classe do Bootstrap. -->
+                {% if user.is_authenticated %}
+                <!-- Verifica se o usuário está autenticado. -->
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" id="fichas-link" href="{% url 'ficha' %}"><i
+                            class="fa-solid fa-scroll fa-beat-fade" style="color: #ffab6b;"></i> Ficha de
+                        Personagem</a>
+                    <!-- Link para a página de Ficha de Personagem. -->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownContaButton" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="border-radius: 0; color: inherit;">
+                        <i class="fa-solid fa-rectangle-list fa-fade" style="color: #ff7409;"></i> Conta
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownContaButton"
+                        style="background-color: transparent;">
+                        <a class="dropdown-item" href="{% url 'alterar_senha' %}">
+                            <i class="fa-solid fa-key" style="color: #ff7409;"></i> Alterar senha
+                        </a>
+                        <a class="dropdown-item" href="{% url 'excluir_conta' %}">
+                            <i class="fa-solid fa-trash" style="color: #ff7409;"></i> Excluir conta
+                        </a>
+                    </div>
+                </li>
+
+                {% else %}
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'login' %}" id="login-link"><i
+                            class="fa-solid fa-right-to-bracket fa-beat-fade" style="color: #ff8800;"></i> Login</a>
+                    <!-- Link para a página de login. -->
+                </li>
+                <!-- Se o usuário não estiver autenticado. -->
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'registro' %}" id="registro-link"><i
+                            class="fa-solid fa-user-plus fa-beat-fade" style="color: #e06500;"></i> Registre-se</a>
+                    <!-- Link para a página de registro. -->
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" id="biblioteca-link" href="{% url 'biblioteca' %}"><i
+                            class="fa-solid fa-book-open fa-flip" style="color: #ffbb00;"></i> Biblioteca</a>
+                    <!-- Link para a página de Biblioteca. -->
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'logout' %}" id="sair-link"><i
+                            class="fa-solid fa-right-to-bracket fa-flip" style="color: #e7dc40;"></i> Sair</a>
+                    <!-- Link para sair (logout). -->
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        <!-- Barra de navegação. -->
+        <!-- Botão de menu retrátil para mobile -->
+        <button onclick="menuShow()" class="mobile-menu-icon" id="mobileMenuButton"></button>
+
+        <div class="mobile-menu">
+            <!-- Menu retrátil para mobile -->
+            <ul>
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                    <!-- Link para a página Inicial. -->
+                </li>
+                <!-- Lista de navegação com classe do Bootstrap. -->
+                {% if user.is_authenticated %}
+                <!-- Verifica se o usuário está autenticado. -->
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'ficha' %}">Ficha de Personagem</a>
+                    <!-- Link para a página de Ficha de Personagem. -->
+                </li>
+                {% else %}
+
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'login' %}" id="login-link">Login</a>
+                    <!-- Link para a página de login. -->
+                </li>
+                <!-- Se o usuário não estiver autenticado. -->
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'registro' %}">Registre-se</a>
+                    <!-- Link para a página de registro. -->
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'biblioteca' %}">Biblioteca</a>
+                    <!-- Link para a página de Biblioteca. -->
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <!-- Item de navegação com classe do Bootstrap. -->
+                    <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+                    <!-- Link para sair (logout). -->
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+=======
+            Forja
+            Épica de
+            Aventuras <i class="fa-solid fa-dice-d20" style="color:red;"></i></h1>
+        <!-- Título do site. -->
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+    </header>
+
+    <div class="row">
+        <!-- Linha do Bootstrap. -->
+
+        <div class="col-md-2 col-sm-3 col-xs-12 order-1" style="text-align: center;">
+            <!-- Coluna 1 com classes do Bootstrap. -->
+            <nav class="navbar" style="margin-left: 25%">
+                <!-- Barra de navegação. -->
+
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <!-- Item de navegação com classe do Bootstrap. -->
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                        <!-- Link para a página Inicial. -->
+                    </li>
+                    <!-- Lista de navegação com classe do Bootstrap. -->
+                    {% if user.is_authenticated %}
+                    <!-- Verifica se o usuário está autenticado. -->
+                    <li class="nav-item">
+                        <!-- Item de navegação com classe do Bootstrap. -->
+                        <a class="nav-link" href="{% url 'ficha' %}">Ficha de Personagem</a>
+                        <!-- Link para a página de Ficha de Personagem. -->
+                    </li>
+                    <li class="nav-item">
+                        <!-- Item de navegação com classe do Bootstrap. -->
+                        <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+                        <!-- Link para sair (logout). -->
+                    </li>
+                    {% else %}
+
+                    <li class="nav-item">
+                        <!-- Item de navegação com classe do Bootstrap. -->
+                        <a class="nav-link" href="{% url 'login' %}" id="login-link">Login</a>
+                        <!-- Link para a página de login. -->
+                    </li>
+                    <!-- Se o usuário não estiver autenticado. -->
+                    <li class="nav-item">
+                        <!-- Item de navegação com classe do Bootstrap. -->
+                        <a class="nav-link" href="{% url 'registro' %}">Registre-se</a>
+                        <!-- Link para a página de registro. -->
+                    </li>
+
+                    {% endif %}
+                    <li class="nav-item">
+                        <!-- Item de navegação com classe do Bootstrap. -->
+                        <a class="nav-link" href="{% url 'bibliotecas' %}">Bibliotecas</a>
+                        <!-- Link para a página de Bibliotecas. -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="col-md-8 col-sm-6 col-xs-12 order-2 central">
+            <!-- Coluna 2 com classes do Bootstrap, classe 'central'. -->
+
+            {% block conteudo%}
+            <!-- Bloco de conteúdo personalizado. -->
+            {% endblock%}
+
+        </div>
+
+        <div class="col-md-2 col-sm-3 col-xs-12 order-3" style="text-align: center;">
+            <!-- Coluna 3 com classes do Bootstrap. -->
+            <nav class="navbar">
+                {%block content%}
+                {%endblock%}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+        <p>Créditos de imagens:</p>
+        <ul>
+            <li><a href="https://br.freepik.com/vetores-gratis/pergaminho-aberto-realista-em-transparente_39845337.htm#query=old%20parchment%20paper%20scroll%20sheet%20vintage%20aged%20or%20texture%20isolated%20on%20white%20background&position=0&from_view=search&track=ais"
+                    target="_blank" rel="noopener noreferrer">Imagem
+                    de upklyak
+                </a> no Freepik
+            </li>
+            <li><a href="https://br.freepik.com/vetores-gratis/fundo-de-pedra_880687.htm#query=pedra%20textura&position=6&from_view=search&track=ais "
+                    target="_blank" rel="noopener noreferrer">Imagem de Olga_spb</a> no Freepik
+            </li>
+            <li>
+                Red Textured Volcano Landscape Desktop Wallpaper by Fatih Kaya no Canva
+            </li>
+        </ul>
+    </footer>
+<<<<<<< HEAD
+    <!-- ------------------------------- SCRIPTS -------------------------------------- -->
+    <script>$(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script src="{% static 'js/csrf.js' %}"></script>
+    <script src="{% static 'js/menu-mobile.js' %}"></script>
+    <script src="{% static 'js/biblioteca.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            // Ao clicar no botão de dropdown
+            $('.dropdown-toggle').on('click', function (e) {
+                if ($dropdownMenu.toggleClass = "show") {
+                    var $dropdownMenu = $(this).next('.dropdown-menu');
+                    $dropdownMenu.removeClass('show');
+                }
+                else {
+                    var $dropdownMenu = $(this).next('.dropdown-menu');
+                    $dropdownMenu.toggleClass('show');
+                }
+            });
+
+            // Fechar dropdown ao clicar fora dele
+            $(document).on('click', function (e) {
+                if (!$(e.target).closest('.dropdown').length) {
+                    $('.dropdown-menu').removeClass('show');
+                }
+            });
+        });
+    </script>
+=======
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+
+
+</body>
+
+</html>

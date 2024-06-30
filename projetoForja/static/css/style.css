@@ -1,0 +1,1061 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url('https://dl.dropboxusercontent.com/s/qfpakpjedhsrdb9/OpenDyslexicAlta-Regular.ttf');
+}
+
+/* Importação da fonte 'Alfa Slab One' do Google Fonts. */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Alfa Slab One, sans-serif;
+    color: #ff7e15;
+    -webkit-text-stroke: 1px #000000;
+}
+
+/* Estilos globais para todos os elementos da página. */
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url('/static/imagens/background.png');
+}
+
+/*Estilo do corpo da página. */
+
+.titulo {
+    text-align: center;
+    color: #e22a1d;
+    font-size: 3rem;
+    /* Usando unidades rem para melhor escalabilidade */
+    margin-top: 3%;
+    /* Reduzindo a margem superior para telas menores */
+    margin-bottom: 3%;
+    /* Reduzindo a margem inferior para telas menores */
+    text-shadow: 4px 0 #000, -4px 0 #000, 0 4px #000, 0 -4px #000,
+        2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000;
+}
+
+/* Media query para ajustar o título em telas menores, como celulares */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 40px;
+        /* Reduzindo o tamanho da fonte para telas menores */
+        margin-top: 3%;
+        /* Reduzindo a margem superior para telas menores */
+        margin-bottom: 3%;
+        /* Reduzindo a margem inferior para telas menores */
+    }
+}
+
+/* Estilo do título. */
+<<<<<<< HEAD
+/*------ menu retratil-----*/
+
+/*--------------------MENU---------------------*/
+.nav-bar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    /* Remova os marcadores de lista */
+    padding: 0;
+    /* Remova o preenchimento padrão da lista */
+}
+
+.nav-bar ul li {
+    margin-right: 20px;
+    /* Espaçamento entre os itens do menu */
+}
+
+#biblioteca-link .fa-book-open {
+    visibility: hidden;
+}
+
+#biblioteca-link:hover .fa-book-open {
+    visibility: visible;
+}
+
+#inicio-link .fa-dice-d20 {
+    visibility: hidden;
+}
+
+#inicio-link:hover .fa-dice-d20 {
+    visibility: visible;
+}
+
+#fichas-link .fa-rectangle-list {
+    visibility: hidden;
+}
+
+#fichas-link:hover .fa-rectangle-list {
+    visibility: visible;
+}
+
+#login-link .fa-right-to-bracket {
+    visibility: hidden;
+}
+
+#login-link:hover .fa-right-to-bracket {
+    visibility: visible;
+}
+
+#registro-link .fa-user-plus {
+    visibility: hidden;
+}
+
+#registro-link:hover .fa-user-plus {
+    visibility: visible;
+}
+
+#sair-link .fa-right-to-bracket {
+    visibility: hidden;
+}
+
+#sair-link:hover .fa-right-to-bracket {
+    visibility: visible;
+}
+
+.nav-bar ul li:last-child {
+    margin-right: 0;
+    /* Remova o espaçamento para o último item */
+}
+
+/* Estilos para a barra de navegação. */
+
+.nav-item a {
+    position: relative;
+    color: #f8f8f6;
+    -webkit-text-stroke: 1px #000000;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 30%;
+    overflow: hidden;
+    text-shadow: 4px 0 #000, -4px 0 #000, 0 4px #000, 0 -4px #000,
+        2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000;
+    font-size: 25px;
+    margin-right: 60px;
+}
+
+.nav-item a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url('/static/imagens/pedra.jpg');*/
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: -1;
+    /* Coloca o pseudo-elemento atrás do conteúdo real */
+    border-radius: 30%;
+}
+
+/* Estilos para os links na barra de navegação. */
+
+.nav-item a:hover {
+    transform: scale(1.1);
+    color: #e22a1d;
+}
+
+/* Estilos para os links da barra de navegação ao passar o mouse. */
+.mobile-menu-icon {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media screen and (max-width: 730px) {
+    .nav-bar {
+        padding: 1.5rem 4rem;
+    }
+
+    .nav-item {
+        position: static;
+        margin: 0;
+        padding: 0;
+        display: none;
+
+    }
+
+    .nav-item a {
+        font-size: initial;
+        margin: 0;
+        text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+            1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+    }
+
+    .nav-item a::before {
+        display: none;
+        font-size: initial;
+        margin: 0;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        color: red;
+        font-size: 2rem;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        margin-left: 0 auto;
+        /* Ajuste conforme necessário */
+    }
+
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-menu .nav-item {
+        display: block;
+        padding-top: 1.2rem;
+    }
+
+    .mobile-menu-icon.close-icon {
+        display: none;
+    }
+
+    .mobile-menu-icon::before {
+        content: '☰';
+        /* Ícone padrão do botão */
+    }
+
+    .mobile-menu-icon.active::before {
+        content: '✕';
+        /* Ícone alterado quando o menu estiver aberto */
+    }
+
+    .open {
+        display: block;
+    }
+}
+
+
+
+=======
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+/*-------------------------CHAT----------------------------*/
+/* CSS para o elemento com a classe chat-box */
+
+/* Estilos para o textarea */
+.chat-box {
+    color: #ff7e15;
+    /* Cor padrão do texto */
+    max-height: 600px;
+    min-height: 600px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: black;
+    /* Cor de fundo padrão */
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 25px;
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 12px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #ff3232;
+    border-radius: 6px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background-color: #000000c9;
+    border-radius: 6px;
+}
+
+/* Estilos para a legibilidade e contraste */
+.chat-box.fonte-dislexia {
+    font-family: 'OpenDyslexic';
+    color: #ff7e15;
+
+    /* Cor desejada */
+}
+
+/* Estilos para os modos de visualização */
+.chat-box.modo-claro {
+    background-color: #FFFFFF;
+    /* Cor desejada */
+}
+
+.chat-box.modo-escuro {
+    background-color: #000000;
+    /* Cor desejada */
+}
+
+.chat-box.modo-alto-contraste {
+    background-color: #000000;
+    color: #FF0000;
+    /* Cor de alto contraste desejada */
+}
+
+/* Estilo para o seletor de cor */
+.color-picker {
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+.dropbtn {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.dropdown-font-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}
+
+/* Media query para ajustar o elemento em telas menores, como celulares */
+@media (max-width: 768px) {
+    .chat-box {
+        height: 60%;
+        min-height: 400px;
+        max-height: 400px;
+        /* Reduzindo a altura para telas menores */
+    }
+}
+
+/* Estilo para o botão com a classe "botao" */
+.botao {
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #0f0f0f;
+    color: #fff;
+    border: 2px solid #474849;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.botao.gravando {
+    background-color: red;
+    color: white;
+}
+
+.botao:hover {
+    background-color: #e22a1d;
+    color: #fff;
+}
+
+#btn-controle {
+    display: flex;
+    align-items: center;
+}
+
+#transferencia-btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 120px;
+    margin-right: -50px;
+}
+
+@media (max-width: 767px) {
+    #transferencia-btn {
+        position: relative;
+    }
+}
+
+#btn-confirmar {
+    display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+}
+
+@media (max-width: 767px) {
+    #btn-confirmar {
+        position: relative;
+
+    }
+}
+
+.formato-dropdown {
+    background-color: #ff0000;
+    /* Defina a cor de fundo desejada */
+}
+
+.dropdown-selecao-fonte {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dropdown-selecao-fonte .dropdown-menu {
+    background-color: #000000;
+    /* Cor do plano de fundo */
+    position: absolute;
+    z-index: 9999;
+    /* Garante que a caixa de opções esteja acima de todo o conteúdo */
+}
+
+    .dropdown-menu {
+        display: none; /* Começa oculto */
+        position: absolute;
+        z-index: 1000; /* Z-index alto para sobrepor o conteúdo */
+    }
+    .show {
+        display: block !important; /* Para forçar a exibição quando o dropdown estiver ativo */
+    }
+
+
+
+.dropdown-selecao-fonte .dropdown-item {
+    color: #ffffff;
+    /* Cor do texto */
+}
+
+.dropdown-selecao-fonte .dropdown-item:hover {
+    color: #ff0000;
+    /* Cor do texto ao passar o mouse */
+    background-color: #f5f5f5;
+    /* Cor do plano de fundo ao passar o mouse */
+}
+
+#fonte-dislexia {
+    background-image: url('/static/imagens/botaoDislexia.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px;
+    padding-left: 50px;
+    margin-top: 10px;
+}
+
+
+/*------------------------FORMULÁRIOS----------------------*/
+/* Estilizando o formulário de login */
+.formularios {
+    background-image: url('/static/imagens/pergaminho.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10%;
+    padding: 25%;
+    padding-top: 10%;
+    border-radius: 10px;
+    box-shadow: 100 100 100px rgb(255, 253, 253, 0.1);
+
+}
+
+.formularios form input {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.formulario-ficha {
+    background-image: url('/static/imagens/pergaminho.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10%;
+    border-radius: 10px;
+    box-shadow: 100 100 100px rgb(255, 253, 253, 0.1);
+    max-height: 1000px;
+    /* Defina a altura máxima desejada */
+    overflow-y: auto;
+    /* Habilita a rolagem vertical quando necessário */
+}
+
+.formulario-ficha::-webkit-scrollbar {
+    width: 12px;
+}
+
+.formulario-ficha::-webkit-scrollbar-thumb {
+    background-color: coral;
+    border-radius: 6px;
+}
+
+.formulario-ficha::-webkit-scrollbar-track {
+    background-color: #000000c9;
+    border-radius: 6px;
+}
+
+.formulario-ficha form input,
+.formulario-ficha form textarea {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.formulario-ficha label {
+    outline: none !important;
+}
+
+@media (max-width: 768px) {
+    .formulario-ficha {
+        margin-bottom: 20px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#todasfichas {
+    position: relative;
+    max-height: 830px;
+}
+
+#voltar-ao-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 10;
+}
+
+#voltar-ao-topo.mostrar {
+    display: block;
+}
+
+
+.campo-numero {
+    width: 100px;
+}
+
+label {
+    font-size: 19px;
+    outline: none;
+
+}
+
+.label-alinhado {
+    display: inline-block;
+    width: 130px;
+    /* Ou qualquer largura desejada */
+}
+
+#scrollToBottomButton {
+    padding: 7px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    background-color: #38dc3d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none;
+    /* Inicialmente oculto */
+}
+
+/* Media query para ajustar o layout em telas menores, como celulares */
+@media (max-width: 768px) {
+    .formularios {
+        margin: 3%;
+        /* Reduzindo a margem para telas menores */
+        padding: 10%;
+        /* Reduzindo o preenchimento ainda mais para telas menores */
+        box-shadow: none;
+        /* Removendo a sombra para telas menores */
+    }
+
+    #voltar-ao-topo {
+        position: fixed;
+        bottom: 150px;
+        right: 20px;
+        display: none;
+        z-index: 10;
+    }
+
+    #scrollToBottomButton {
+        display: block;
+        /* Visível em telas pequenas */
+    }
+}
+
+
+/*----------------------------------------- Gerador de nomes -------------------------------------------*/
+.gerador-nomes {
+    max-width: 600px;
+    margin-left: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(120, 120, 120, 0.8);
+}
+
+.gerador-nomes-title {
+    text-align: center;
+}
+
+.gerador-nomes-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gerador-nomes-select {
+    margin-bottom: 10px;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 18px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+@media(max-width: 768px) {
+    .gerador-nomes {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+}
+
+/* Estilo para botão em telas menores */
+#abrirModal {
+    display: none;
+}
+
+/* Estilos específicos para o modal */
+.modal-gerador {
+    display: none;
+    /* Oculto por padrão */
+    position: fixed;
+    /* Fixo na tela */
+    z-index: 1000;
+    /* Sempre na frente */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Habilitar rolagem se necessário */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo semi-transparente */
+}
+
+.modal-gerador .modal-content {
+    background-color: #787878;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Largura do modal */
+}
+
+.modal-gerador .fechar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Estilo para modal em telas menores */
+@media screen and (max-width: 768px) {
+
+    #abrirModal {
+        display: block;
+        margin-bottom: 10px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    /* Estilo para o modal em telas menores */
+    #gerador-nomes {
+        display: none;
+    }
+
+}
+
+/* ---------------------------------------- Dados RPG ------------------------------------------------- */
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Altura total da viewport para centralização vertical */
+}
+
+.dice-container {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+/*Dado na tela*/
+#dice-result-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo semi-transparente */
+}
+
+#dice-result-popup {
+    background-color: transparent;
+    /* Fundo transparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: none;
+    /* Sem sombra */
+}
+
+#dice-animation {
+    font-size: 200px;
+    /* Aumentar o tamanho do dado */
+    color: red;
+}
+
+#result-number {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+    /* Cor do número */
+}
+
+/* Estilizando os botões de dados */
+[id^="botao-dado"] {
+    width: 100%;
+    /* Largura dos botões */
+}
+
+#botao-dado8 {
+    background-color: #0f0f0f;
+    border: 2px solid #474849;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: default;
+    pointer-events: none;
+}
+
+#botao-dado9 {
+    visibility: hidden;
+}
+
+
+@media(max-width: 768px) {
+
+    .dice-container {
+        align-self: center;
+        display: grid;
+        margin-left: 0;
+        grid-template-columns: auto auto auto;
+        width: 300px;
+    }
+
+    #botao-dado9 {
+        visibility: visible;
+        background-color: #0f0f0f;
+        border: 2px solid #474849;
+        border-radius: 5px;
+        padding: 10px 20px;
+    }
+}
+
+/*Placeholders*/
+/* Altera a cor do placeholder */
+::-webkit-input-placeholder {
+    color: #999;
+    /* Cor desejada */
+    font-family: Arial, sans-serif;
+    /* Fonte desejada */
+}
+
+:-moz-placeholder {
+    color: #999;
+    /* Cor desejada */
+    font-family: Arial, sans-serif;
+    /* Fonte desejada */
+}
+
+::-moz-placeholder {
+    color: #999;
+    /* Cor desejada */
+    font-family: Arial, sans-serif;
+    /* Fonte desejada */
+}
+
+:-ms-input-placeholder {
+    color: #999;
+    /* Cor desejada */
+    font-family: Arial, sans-serif;
+    /* Fonte desejada */
+}
+
+/* Altera a fonte do placeholder */
+input::placeholder {
+    font-family: Arial, sans-serif;
+    /* Fonte desejada */
+}
+
+/*-----------------------SEÇÃO CENTRAL------------------------*/
+.container {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.central {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 700px;
+    width: 100%;
+    height: 100%;
+}
+
+<<<<<<< HEAD
+/*--------------------------------------Biblioteca--------------------------------------------*/
+/* Estilos para o container-biblioteca */
+#pdfContainer {
+    margin-top: 10px;
+    min-height: 500px;
+    max-height: 600px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* Estilizando a barra de rolagem */
+#pdfContainer::-webkit-scrollbar {
+    width: 12px;
+    /* largura da barra de rolagem */
+}
+
+/* Estilizando o botão da barra de rolagem */
+/* Estilizando o botão da barra de rolagem */
+#pdfContainer::-webkit-scrollbar-thumb {
+    background-color: #ff3232;
+    /* cor do botão */
+    border-radius: 6px;
+    /* arredondamento do botão */
+}
+
+/* Estilizando o trilho da barra de rolagem */
+#pdfContainer::-webkit-scrollbar-track {
+    background-color: #000000c9;
+    /* cor do trilho */
+    border-radius: 6px;
+    /* arredondamento do trilho */
+}
+
+/* Estilos para os PDFs */
+.pdf-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pdf-card .pdf-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+/* Estilos adicionais para os PDFs */
+.pdf-card.hidden {
+    display: none;
+}
+
+.dropdown-biblioteca {
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.dropdown-biblioteca .dropdown-menu {
+    background-color: #000000;
+    /* Cor do plano de fundo */
+}
+
+.dropdown-biblioteca .dropdown-item {
+    color: #ffffff;
+    /* Cor do texto */
+
+}
+
+.dropdown-biblioteca .dropdown-item:hover {
+    color: #ff0000;
+    /* Cor do texto ao passar o mouse */
+    background-color: #f5f5f5;
+    /* Cor do plano de fundo ao passar o mouse */
+}
+
+.dropdown-toggle {
+    background-color: #000;
+}
+
+#searchInput {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@media (max-width: 768px) {
+    .input-group {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #pdfContainer {
+        min-height: 300px;
+        /* Reduza a altura do container */
+        max-height: 500px;
+        border-radius: 3%;
+        max-width: 400px;
+        /* Reduza a borda */
+        margin-left: auto;
+        margin-right: auto;
+        /* Centralize o container na horizontal */
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .pdf-icon {
+        font-size: 3em;
+        /* Reduza o tamanho do ícone */
+    }
+
+    .pdf-name {
+        font-size: 1em;
+        /* Reduza o tamanho do nome do PDF */
+    }
+}
+
+=======
+
+/* Estilos para as seções central e formulários. */
+
+/*--------------------MENU---------------------*/
+
+.nav-item {
+    position: left;
+    margin-top: 5%;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+/* Estilos para a barra de navegação. */
+
+.nav-item a {
+    position: relative;
+    color: #f8f8f6;
+    -webkit-text-stroke: 1px #000000;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 30%;
+    overflow: hidden;
+    text-shadow: 4px 0 #000, -4px 0 #000, 0 4px #000, 0 -4px #000,
+        2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000;
+}
+
+.nav-item a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/imagens/pedra.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+    background-color: #ffffff;
+    z-index: -1;
+    /* Coloca o pseudo-elemento atrás do conteúdo real */
+    border-radius: 30%;
+}
+
+
+/* Estilos para os links na barra de navegação. */
+
+.nav-item a:hover {
+    background-color: #ffffff;
+    transform: scale(1.1);
+    color: #e22a1d;
+}
+
+/* Estilos para os links da barra de navegação ao passar o mouse. */
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+/*----------------------------------------------------------------------------------*/
+
+footer {
+    margin-top: 10%;
+    padding: 5%;
+    color: aliceblue;
+    background-color: #000000;
+
+}
+
+/* Estilos para o rodapé da página. */

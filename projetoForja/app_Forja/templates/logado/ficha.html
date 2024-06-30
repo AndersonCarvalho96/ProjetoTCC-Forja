@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+<<<<<<< HEAD
+{% load static %}
+{% block conteudo_esquerda %}
+<!-- Botão para abrir o modal (visível apenas em telas menores) -->
+<div id="abrirModal" class="botao">Gerador de nomes</div>
+<!-- Modal -->
+<div id="modal-gerador" class="modal-gerador">
+    <div class="modal-content gerador-nomes">
+        <span class="fechar">&times;</span>
+        <h2>Gerador de Nomes</h2>
+        <label for="race">Escolha uma raça:</label>
+        <select name="race" id="race" class="gerador-nomes-select">
+            <option value="Anão">Anão</option>
+            <option value="Elfo">Elfo</option>
+            <option value="Humano">Humano</option>
+            <option value="Halfling">Halfling</option>
+            <option value="Draconato">Draconato</option>
+            <option value="Gnomo">Gnomo</option>
+            <option value="Meio-Elfo">Meio-Elfo</option>
+            <option value="Meio-Orc">Meio-Orc</option>
+            <option value="Tiefling">Tiefling</option>
+        </select>
+        <label for="gender">Escolha o sexo:</label>
+        <select name="gender" id="gender" class="gerador-nomes-select">
+            <option value="Ambos">Ambos</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select>
+        <button class="botao" id="gerarNome">Gerar Nome</button>
+        <div id="resultado"></div>
+        <button class="botao" id="selecionarNome" style="display: none;">Selecionar Nome</button>
+    </div>
+</div>
+<!-- Gerador de Nomes na Tela Cheia -->
+<div id="gerador-nomes" class="gerador-nomes">
+    <h4 class="gerador-nomes-title">Gerador de Nomes</h4>
+
+    <label for="race" class="gerador-nomes-label">Escolha uma raça:</label>
+    <select name="race" id="race" class="gerador-nomes-select">
+        <option value="Anão">Anão</option>
+        <option value="Elfo">Elfo</option>
+        <option value="Humano">Humano</option>
+        <option value="Halfling">Halfling</option>
+        <option value="Draconato">Draconato</option>
+        <option value="Gnomo">Gnomo</option>
+        <option value="Meio-Elfo">Meio-Elfo</option>
+        <option value="Meio-Orc">Meio-Orc</option>
+        <option value="Tiefling">Tiefling</option>
+    </select>
+
+    <label for="gender" class="gerador-nomes-label">Escolha o sexo:</label>
+    <select name="gender" id="gender" class="gerador-nomes-select">
+        <option value="Ambos">Ambos</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+    </select>
+    <br>
+    <button class="botao" id="gerarNome">Gerar Nome</button>
+
+    <div id="resultado"></div>
+
+    <!-- Botão para selecionar o nome gerado -->
+    <button class="botao" id="selecionarNome" style="display: none;">Selecionar Nome</button>
+
+</div>
+
+
+{% endblock %}
+=======
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+
+
+{% block conteudo %}
+<div id="todasfichas" class="formulario-ficha">
+    <h2 style="text-align: center; margin-bottom: 5%;">Ficha de Personagem:</h2>
+    <form method="post" action="{% url 'salvar_ficha' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12 text-center" style="margin-bottom: 50px;">
+
+                <button type="submit" class="btn btn-primary">Salvar Ficha</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#confirmDeleteModal">Excluir Ficha</button>
+                <button type="button" id="scrollToBottomButton" class="btn btn-info">Suas Fichas</button>
+
+                <!-- Modal de confirmação de exclusão -->
+                <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Deseja realmente excluir esta ficha?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="confirmDeleteButton" type="button" class="btn btn-danger">Confirmar</button>
+                                <button id="cancelDeleteButton" type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                <p class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Informações do Personagem -->
+            <div class="col-md-4">
+                <h3>Informações do Personagem:</h3>
+                <div class="row">
+                    <div class="col">
+                        <input type="hidden" id="ficha_id" name="ficha_id" value="{{ ficha.id }}">
+                        <label for="nivel" class="campo-numero">Nível:</label>
+                        <input type="number" id="nivel" name="nivel" required class="campo-numero"><br><br>
+                        <label for="nome" class="label-alinhado">Nome do Personagem:</label>
+                        <input type="text" id="nome" name="nome" required><br><br>
+                        <label for="jogador" class="label-alinhado">Jogador:</label>
+                        <input type="text" id="jogador" name="jogador"><br><br>
+                        <label for="raca" class="label-alinhado">Raça:</label>
+                        <input type="text" id="raca" name="raca" required><br><br>
+                        <label for="classe" class="label-alinhado">Classe:</label>
+                        <input type="text" id="classe" name="classe" required><br><br>
+                        <label for="alinhamento" class="label-alinhado">Alinhamento:</label>
+                        <input type="text" id="alinhamento" name="alinhamento"><br><br>
+                        <label for="antecedente" class="label-alinhado">Antecedente:</label>
+                        <input type="text" id="antecedente" name="antecedente"><br><br>
+                        <label for="experiencia" class="label-alinhado">Experiência:</label>
+                        <input type="number" id="experiencia" name="experiencia"><br><br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atributos do Personagem -->
+            <div class="col-md-4">
+                <h3>Atributos do Personagem:</h3>
+                <div class="row">
+                    <div class="col">
+                        <label for="forca" class="label-alinhado">Força:</label>
+                        <input type="number" id="forca" name="forca" class="campo-numero"><br>
+                        <label for="destreza" class="label-alinhado">Destreza:</label>
+                        <input type="number" id="destreza" name="destreza" class="campo-numero"><br>
+                        <label for="constituicao" class="label-alinhado">Constituição:</label>
+                        <input type="number" id="constituicao" name="constituicao" class="campo-numero"><br>
+                        <label for="inteligencia" class="label-alinhado">Inteligência:</label>
+                        <input type="number" id="inteligencia" name="inteligencia" class="campo-numero"><br>
+                        <label for="sabedoria" class="label-alinhado">Sabedoria:</label>
+                        <input type="number" id="sabedoria" name="sabedoria" class="campo-numero"><br>
+                        <label for="carisma" class="label-alinhado">Carisma:</label>
+                        <input type="number" id="carisma" name="carisma" class="campo-numero"><br>
+                        <label for="inspiracao" class="label-alinhado">Inspiração:</label>
+                        <input type="number" id="inspiracao" name="inspiracao" class="campo-numero">
+                        <label for="bonus_prof" class="label-alinhado">Bônus de proficiência:</label>
+                        <input type="number" id="bonus_prof" name="bonus_prof" class="campo-numero"><br><br>
+                    </div>
+                </div>
+                <!-- Salvaguardas -->
+                <h4>Salvaguardas:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="salvaguardas" name="salvaguardas" rows="3"
+                            placeholder="Força, Pontos ; Destreza, Pontos;"></textarea>
+                    </div>
+                </div>
+                <!-- Sabedoria Passiva -->
+                <h4>Sabedoria Passiva:</h4>
+                <div class="row">
+                    <div class="col">
+                        <label for="sabedoria_passiva" class="campo-numero">Percepção:</label>
+                        <input type="number" id="sabedoria_passiva" name="sabedoria_passiva"><br><br>
+                    </div>
+                </div>
+                <!-- Outras Proficiências & Idiomas -->
+                <h4>Outras Proficiências & Idiomas:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="outras" name="outras" rows="3"
+                            placeholder="Nome, Pontos, Atributo; Acrobacia, Pontos, Des;"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pontos de Vida e Defesa -->
+            <div class="col-md-4">
+                <h3>Pontos de Vida e Defesa:</h3>
+                <div class="row">
+                    <div class="col">
+                        <label for="hp_max">Pontos de vida máximos (HP):</label>
+                        <input type="number" id="hp_max" name="hp_max"><br><br>
+                        <label for="hp">Pontos de vida atuais (HP):</label>
+                        <input type="number" id="hp" name="hp"><br><br>
+                        <label for="hp_temp">Pontos de vida temporários:</label>
+                        <input type="number" id="hp_temp" name="hp_temp"><br><br>
+                        <label for="dado_vida">Dado de vida:</label>
+                        <textarea id="dado_vida" name="dado_vida" rows="2" placeholder="Total; Resultado"></textarea>
+                        <label>Salvaguarda contra Morte:</label>
+                        <!-- Campos de marcação para Sucesso -->
+                        <label for="sucesso1">Sucesso:</label>
+                        <input type="checkbox" id="sucesso1" name="sucesso1" onclick="marcarSucesso()">
+                        <input type="checkbox" id="sucesso2" name="sucesso2" onclick="marcarSucesso()">
+                        <input type="checkbox" id="sucesso3" name="sucesso3" onclick="marcarSucesso()">
+
+                        <label for="falha1">Falha:</label>
+                        <input type="checkbox" id="falha1" name="falha1" onclick="marcarFalha()">
+                        <input type="checkbox" id="falha2" name="falha2" onclick="marcarFalha()">
+                        <input type="checkbox" id="falha3" name="falha3" onclick="marcarFalha()">
+
+                        <input type="hidden" id="sucessos" name="sucessos">
+                        <input type="hidden" id="falhas" name="falhas">
+
+                        <!--Defesa-->
+                        <label for="ca">Classe de Armadura (CA):</label>
+                        <input type="number" id="ca" name="ca"><br><br>
+                        <label for="iniciativa" class="label-alinhado">Iniciativa:</label>
+                        <input type="number" id="iniciativa" name="iniciativa"><br><br>
+                        <label for="deslocamento" class="label-alinhado">Deslocamento:</label>
+                        <input type="number" id="deslocamento" name="deslocamento"><br><br>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Perícias -->
+            <div class="col-md-4">
+                <h4>Perícias:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="pericias" name="pericias" rows="5"
+                            placeholder="Nome, Pontos, Atributo; Acrobacia, Pontos, Des;"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habilidades de Classe -->
+            <div class="col-md-4">
+                <h4>Ataques & Conjuração:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="ataques_magias" name="ataques_magias" rows="5"
+                            placeholder="Nome, Bônus de ataque, Dano/Tipo;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Equipamento:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="equipamento" name="equipamento" rows="7" placeholder="PC, PP, PE, PO, PL;
+Texto"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- Características e Talentos -->
+            <div class="col-md-4">
+                <h4>Características e Talentos:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="caracteristicas_talentos" name="caracteristicas_talentos" rows="18"
+                            placeholder="Descreva as características e talentos do seu personagem"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- Traços de Personalidade -->
+            <div class="col-md-4">
+                <h4>Traços de Personalidade:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="tracos_personalidade" name="tracos_personalidade" rows="3"
+                            placeholder="Descreva os traços de personalidade do seu personagem"></textarea>
+                    </div>
+                </div>
+                <!-- Ideais -->
+                <h4>Ideais:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="ideais" name="ideais" rows="3"
+                            placeholder="Descreva os ideais do seu personagem"></textarea>
+                    </div>
+                </div>
+                <!-- Vínculos -->
+                <h4>Vínculos:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="vinculos" name="vinculos" rows="3"
+                            placeholder="Descreva os vínculos do seu personagem"></textarea>
+                    </div>
+                </div>
+                <!-- Fraquezas -->
+                <h4>Fraquezas:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="fraquezas" name="fraquezas" rows="3"
+                            placeholder="Descreva as fraquezas do seu personagem"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalhes Pessoais -->
+            <div class="col-md-4">
+                <h4>Detalhes Pessoais:</h4>
+                <div class="row">
+                    <div class="col">
+                        <label for="idade" class="campo-numero">Idade:</label>
+                        <input type="number" id="idade" name="idade" class="campo-numero"><br><br>
+                        <label for="altura" class="campo-numero">Altura:</label>
+                        <input type="number" id="altura" name="altura" class="campo-numero"><br><br>
+                        <label for="peso" class="campo-numero">Peso:</label>
+                        <input type="number" id="peso" name="peso" class="campo-numero"><br><br>
+                        <label for="olhos" class="label-alinhado">Olhos:</label>
+                        <input type="text" id="olhos" name="olhos"><br><br>
+                        <label for="pele" class="label-alinhado">Pele:</label>
+                        <input type="text" id="pele" name="pele"><br><br>
+                        <label for="cabelo" class="label-alinhado">Cabelo:</label>
+                        <input type="text" id="cabelo" name="cabelo"><br><br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alinhamento e Organização -->
+            <div class="col-md-4">
+                <h4>Aliados & Organizações:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="ali_org" name="ali_org" rows="12"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- História do Personagem -->
+            <div class="col-md-4">
+                <h4>História do Personagem:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="historia" name="historia" rows="12"
+                            placeholder="Descreva a história do seu personagem"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Características Adicionais -->
+            <div class="col-md-4">
+                <h4>Características e talentos adicionais:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="caracteristicas_adc" name="caracteristicas_adc" rows="12"
+                            placeholder="Descreva as características e talentos adicionais do seu personagem"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tesouro -->
+            <div class="col-md-4">
+                <h4>Tesouros:</h4>
+                <div class="row">
+                    <div class="col">
+                        <textarea id="tesouro" name="tesouro" rows="10"
+                            placeholder="Descreva os tesouros acumulados pelo seu personagem"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col">
+                        <h4>Classes Conjuradoras:</h4>
+                        <label for="classe_conjuradora">Classe conjuradora:</label>
+                        <input type="text" id="classe_conjuradora" name="classe_conjuradora"><br><br>
+                        <label for="atrib_conjura">Atributo de conjuração:</label>
+                        <input type="text" id="atrib_conjura" name="atrib_conjura"><br><br>
+                        <label for="cd_miss">CD para evitar suas magias:</label>
+                        <input type="text" id="cd_miss" name="cd_miss"><br><br>
+                        <label for="modificador_am">Modificador de ataque mágico:</label>
+                        <input type="text" id="modificador_am" name="modificador_am"><br><br>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Truques -->
+            <div class="col-md-10">
+                <h4>Truques:</h4>
+                <div class="row">
+                    <textarea id="truques" name="truques" rows="10" placeholder="Circulo da magia, Total de espaços, Espaços Utilizados;
+Nome da magia"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+    <button id="voltar-ao-topo" class="botao" style="font-size: 130%;" type="button" data-toggle="tooltip"
+        title="Voltar ao topo"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+
+</div>
+{% endblock %}
+
+{% block content %}
+
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped" style="font-family:Verdana, Geneva, Tahoma, sans-serif;letter-spacing: 1px;">
+        <tr>
+            <th colspan="2" style="color:coral;font-size: 150%;">Suas Fichas</th>
+        </tr>
+        <tr>
+            <th style="color:coral;">Nome</th>
+            <th style="color:coral;">Nivel</th>
+        </tr>
+        {% for ficha in fichas %}
+        <tr>
+            <td><a href="#" onclick="carregarFicha({{ ficha.id }})">{{ ficha.nome }}</a></td>
+            <td style="color: coral;">{{ ficha.nivel }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2" style="color: rgb(255, 171, 92);font-size: 120%;">Nenhuma ficha registrada.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<<<<<<< HEAD
+<script src="{% static 'js/ficha.js' %}"></script>
+=======
+>>>>>>> parent of c02dbeb7 (Conserto de bugs)
+{% endblock %}
