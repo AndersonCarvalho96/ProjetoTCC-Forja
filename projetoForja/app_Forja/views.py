@@ -14,15 +14,11 @@ from django.contrib import messages
 from .models import Ficha
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_http_methods
-<<<<<<< HEAD
 import os
 from django.conf import settings
 from django.contrib.auth.forms import PasswordChangeForm
 from .forms import ChangePasswordForm
 from django.contrib.auth import update_session_auth_hash
-=======
-from django.shortcuts import get_object_or_404
->>>>>>> parent of c02dbeb7 (Conserto de bugs)
 
 
 logger = logging.getLogger(__name__)

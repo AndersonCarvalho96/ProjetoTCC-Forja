@@ -12,7 +12,6 @@
           class="fa-solid fa-magnifying-glass-plus"></i></button>
       <button id="zoom-out" class="botao" style="font-size: 20px;" data-toggle="tooltip" title="Zoom Out"><i
           class="fa-solid fa-magnifying-glass-minus"></i></button>
-<<<<<<< HEAD
       <!-- Botões de fonte -->
       <!-- Botão para abrir o menu de opções -->
       <button id="configuracoes-btn" class="botao" data-toggle="tooltip" title="Configurar Fonte"><i
@@ -80,8 +79,6 @@
         <button id="upload-btnMob" class="botao" style="font-size: 120%;margin-left: 2px;"><i class="fa fa-upload"
             data-toggle="tooltip" title="Fazer Upload"></i></button>
       </div>
-=======
->>>>>>> parent of c02dbeb7 (Conserto de bugs)
     </div>
 
     <div class="col-md-10 ">
@@ -158,51 +155,11 @@
 
 </div> <!-- Fim do container Bootstrap -->
 
-<<<<<<< HEAD
 
 <!-- Elemento de áudio -->
 <audio id="dice-sound" src="{% static 'sons/rpg-dice.mp3' %}" preload="auto"></audio>
 <audio id="successSound" src="{% static 'sons/success.mp3' %}" preload="auto"></audio>
 <audio id="failSound" src="{% static 'sons/fail.mp3' %}" preload="auto"></audio>
-=======
-<!-- Inclusão dos scripts -->
-<script src="{% static 'js/audio_recorder.js' %}"></script>
-<script src="{% static 'js/script.js' %}"></script>
-<script>
-  function rollDice(sides) {
-    const overlay = document.getElementById('dice-result-overlay');
-    const diceAnimation = document.getElementById('dice-animation');
-    const resultNumber = document.getElementById('result-number');
-    const chatBox = document.getElementById('texto-reconhecido');
-
-    // Exibir overlay
-    overlay.style.display = 'flex';
-
-    // Exibir dado girando
-    diceAnimation.innerHTML = '<i class="fa-solid fa-dice-d20 fa-spin-pulse" style="color:red"></i>';
-
-    // Simular tempo de rolagem
-    setTimeout(() => {
-      const result = Math.floor(Math.random() * sides) + 1;
-
-      // Exibir número
-      resultNumber.innerText = result;
-
-      // Esconder dado e número após 2 segundos
-      setTimeout(() => {
-        overlay.style.display = 'none';
-        diceAnimation.innerHTML = ''; // Remover dado
-        resultNumber.innerText = ''; // Remover número
-
-        // Adicionar o resultado à caixa de texto
-        chatBox.value += '\nResultado D' + sides + ': ' + result + '\n';
-      }, 2000); // Duração da exibição do número
-    }, 1000); // Duração da animação do dado
-  }
-
-
-</script>
->>>>>>> parent of c02dbeb7 (Conserto de bugs)
 
 <script src="{% static 'js/roll-dice.js' %}"></script>
 <script src="{% static 'js/audio_recorder.js' %}"></script>

@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth import get_user_model
-from simple_history.models import HistoricalRecords
+
 
 
 class UsuarioManager(BaseUserManager):
@@ -46,8 +45,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'login'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['email']
- # Configuração do histórico
-    history = HistoricalRecords()
+
 
     def __str__(self):
         return self.login

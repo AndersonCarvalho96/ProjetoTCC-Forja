@@ -1,10 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Usuario
-from simple_history.admin import SimpleHistoryAdmin
 
 # Registro do modelo Usuario com rastreamento de histórico
-class UsuarioAdmin(UserAdmin, SimpleHistoryAdmin):
+class UsuarioAdmin(UserAdmin):
     # Configurações personalizadas para administração de usuários
     list_display = ('id_usuario', 'nome', 'email', 'login', 'is_active', 'is_staff')
     search_fields = ('nome', 'email', 'login')
