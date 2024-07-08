@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth import get_user_model
 
 
 
@@ -45,7 +46,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'login'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['email']
-
+ 
 
     def __str__(self):
         return self.login

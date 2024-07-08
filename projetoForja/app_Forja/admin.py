@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Usuario
 
+
 # Registro do modelo Usuario com rastreamento de histórico
 class UsuarioAdmin(UserAdmin):
     # Configurações personalizadas para administração de usuários

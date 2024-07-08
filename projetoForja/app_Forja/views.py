@@ -34,27 +34,6 @@ def home(request):
 # Função de registro de usuário.
 
 
-@csrf_exempt
-def record_and_recognize(request):
-    if request.method == 'POST':
-        audio_data = request.FILES.get('audio')
-        if not audio_data:
-            return JsonResponse({'error': 'Nenhum dado de áudio encontrado'}, status=400)
-        recognizer = sr.Recognizer()
-        try:
-            with sr.AudioFile(audio_data) as source:
-                audio = recognizer.record(source)
-            recognized_text = recognizer.recognize_google(
-                audio, language='pt-BR')
-            return JsonResponse({'text': recognized_text})
-        except sr.UnknownValueError as e:
-            return JsonResponse({'error': 'Desculpe, não entendi isso.'}, status=400)
-        except sr.RequestError as e:
-            return JsonResponse({'error': 'Desculpe, houve um erro ao processar sua requisição'}, status=500)
-    else:
-        return JsonResponse({'error': 'Método não permitido'}, status=405)
-
-
 def registro(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
@@ -73,6 +52,7 @@ def registro(request):
 
 User = get_user_model()
 
+
 @login_required
 def alterar_senha(request):
     if request.method == 'POST':
@@ -82,10 +62,12 @@ def alterar_senha(request):
             # Atualiza a sessão do usuário para manter o login ativo
             update_session_auth_hash(request, user)
             messages.success(request, 'Sua senha foi alterada com sucesso.')
-            return redirect('home')  # Redireciona para a página de perfil ou outra após a alteração de senha
+            # Redireciona para a página de perfil ou outra após a alteração de senha
+            return redirect('home')
     else:
         form = ChangePasswordForm(request.user)
     return render(request, 'logado/alterar_senha.html', {'form': form})
+
 
 @login_required
 def excluir_conta(request):
@@ -96,10 +78,13 @@ def excluir_conta(request):
         # Exclui o usuário
         user.delete()
         messages.success(request, 'Conta excluída com sucesso.')
-        return redirect('home')  # Redirecione para a página inicial ou página de login
+        # Redirecione para a página inicial ou página de login
+        return redirect('home')
     else:
-        return render(request, 'logado/excluir_conta.html',{'username': request.user.nome})  # Renderize um template de confirmação, se desejar
-    
+        # Renderize um template de confirmação, se desejar
+        return render(request, 'logado/excluir_conta.html', {'username': request.user.nome})
+
+
 @csrf_exempt
 def biblioteca(request):
     pdf_dir = os.path.join(settings.STATICFILES_DIRS[0], 'pdfs')
