@@ -136,4 +136,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # Insira seu endereço de email Gmail aqui
 EMAIL_HOST_USER = 'noreplyforjaeda@gmail.com'
-EMAIL_HOST_PASSWORD = 'ymae drok dfjc ujzh'  # Insira sua senha do Gmail aqui
+EMAIL_HOST_PASSWORD = ''  # Insira sua senha do Gmail aqui
