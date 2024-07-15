@@ -110,12 +110,12 @@ O `db.sqlite3` é um arquivo de banco de dados SQLite que armazena os dados da a
 
 ## Código Principal de Transcrição de Fala (audio_recorder.js):
 
+```javascript
 var recognition;
 var textoReconhecidoElement;
-var lastTranscription = ' ';
+var lastTranscription = '';
 
 document.addEventListener('DOMContentLoaded', function () {
-
     textoReconhecidoElement = document.getElementById("texto-reconhecido");
     const recordButton = document.getElementById('record-button');
     const stopButton = document.getElementById('stop-button');
@@ -123,131 +123,73 @@ document.addEventListener('DOMContentLoaded', function () {
     const stopButtonMob = document.getElementById('stop-buttonMob');
 
     if (recordButton && stopButton) {
-
         recordButton.addEventListener('click', startRecording);
-
         stopButton.addEventListener('click', stopRecording);
-
     }
 
     if (recordButtonMob && stopButtonMob) {
-
         recordButtonMob.addEventListener('click', startRecordingMob);
-
         stopButtonMob.addEventListener('click', stopRecordingMob);
-
     }
 
     if ('webkitSpeechRecognition' in window) {
-
         recognition = new webkitSpeechRecognition();
-
         recognition.lang = 'pt-BR';
-
         recognition.continuous = true;
-
         recognition.interimResults = true;
-
         recognition.onresult = function (event) {
-
             const result = event.results[event.results.length - 1][0].transcript;
-
             const isFinal = event.results[event.results.length - 1].isFinal;
-
             if (isFinal && result !== lastTranscription) {
-
                 textoReconhecidoElement.value += result + '\n';
-
                 lastTranscription = result;
-
             }
-
         };
 
         recognition.onerror = function (event) {
-
             console.error('Erro durante a gravação:', event.error);
-
         };
-
     } else {
-
         alert('Seu navegador não suporta a API de Reconhecimento de Fala do Web Speech.');
-
     }
-
 });
 
-
 function startRecording() {
-
     document.getElementById('record-button').disabled = true;
-
     document.getElementById('record-button').classList.add('gravando');
-
     document.getElementById('stop-button').disabled = false;
-
-
-
     if (recognition) {
-
         recognition.start();
-
     }
-
 }
 
-
-
 function stopRecording() {
-
     document.getElementById('record-button').disabled = false;
-
     document.getElementById('record-button').classList.remove('gravando');
-
     document.getElementById('stop-button').disabled = true;
-
     if (recognition) {
-
         recognition.stop();
-
     }
-
 }
 
 function startRecordingMob() {
-
     document.getElementById('record-buttonMob').disabled = true;
-
     document.getElementById('record-buttonMob').classList.add('gravando');
-
     document.getElementById('stop-buttonMob').disabled = false;
-
-
-
     if (recognition) {
-
         recognition.start();
-
     }
-
 }
 
 function stopRecordingMob() {
-
     document.getElementById('record-buttonMob').disabled = false;
-
     document.getElementById('record-buttonMob').classList.remove('gravando');
-
     document.getElementById('stop-buttonMob').disabled = true;
-
     if (recognition) {
-
         recognition.stop();
-
     }
-
 }
+
 
 
 Este trecho proporciona uma visão geral da estrutura do código, servindo como modelo para outros desenvolvimentos. A escolha do modelo MTV do Django e a utilização de JavaScript para funcionalidades interativas destacam a flexibilidade e a modernidade das tecnologias empregadas.
