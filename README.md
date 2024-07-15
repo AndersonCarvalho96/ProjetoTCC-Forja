@@ -189,8 +189,7 @@ function stopRecordingMob() {
         recognition.stop();
     }
 }
-
-
+```
 
 Este trecho proporciona uma visão geral da estrutura do código, servindo como modelo para outros desenvolvimentos. A escolha do modelo MTV do Django e a utilização de JavaScript para funcionalidades interativas destacam a flexibilidade e a modernidade das tecnologias empregadas.
 
