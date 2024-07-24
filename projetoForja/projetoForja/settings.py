@@ -135,5 +135,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # Insira seu endereço de email Gmail aqui
-EMAIL_HOST_USER = 'noreplyforjaeda@gmail.com'
-EMAIL_HOST_PASSWORD = ''  # Insira sua senha do Gmail aqui
+EMAIL_HOST_USER = ''  # Insira sua conta de email aqui
+EMAIL_HOST_PASSWORD = ''  # Insira sua senha do email aqui
