@@ -14,7 +14,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # Rota para a administração do Django.
 
     # Rota para a página inicial, usando a função 'home' da sua view.
-    path('', views.home, name='index'),
+    path('', views.home, name='home'),
 
     # Rota para o registro de usuário, usando a função 'registro' da view.
     path('registro/', views.registro, name='registro'),
